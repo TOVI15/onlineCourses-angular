@@ -1,0 +1,48 @@
+/* Home container */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure it takes full height of the viewport */
+  margin: 0;
+  overflow: hidden; /* Prevent image overflow */
+}
+
+.image-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/home.jpg');
+  background-size: cover; /* Ensure the image covers the screen */
+  background-position: center;
+  display: flex;
+  justify-content: flex-end; /* Align text to the right */
+  align-items: flex-start; /* Align text closer to the top */
+  padding: 40px 20px; /* Add padding around the text, slightly reduced for better fit */
+}
+
+.text-overlay {
+  position: absolute;
+  top: 60%; /* Move the text a bit lower */
+  right: 5%; /* Align text to the right */
+  transform: translateY(-50%);
+  max-width: 500px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8); /* Lighter background for better readability */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: right; /* Align text to the right side */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add slight shadow to text container */
+}
+
+.text-overlay h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.text-overlay p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #34495e;
+}

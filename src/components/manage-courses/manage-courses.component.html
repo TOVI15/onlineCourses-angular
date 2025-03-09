@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="course-selection">
+        <h2>Select a Course</h2>
+        <mat-form-field>
+            <mat-label>Select Course</mat-label>
+            <mat-select [(ngModel)]="selectedCourse" (selectionChange)="getLessonsForCourse(selectedCourse.id)">
+                @for (course of courses; track course.id) {
+                <mat-option [value]="course" >
+                    {{ course.title }}
+                </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        @if (selectedCourse) {
+        <div class="button-group">
+            <button (click)="editCourse()">Edit Course</button>
+            <button (click)="deleteItem(selectedCourse.id, 'Course')">Delete Course</button>
+        </div>
+        }
+        
+            @if (selectedCourse) {
+            <div class="lessons-section">
+                <h3>Lessons in {{ selectedCourse.title }}</h3>
+                <div class="lessons-grid">
+                    @for (lesson of lessons; track lesson.id) {
+                        <div class="lesson-card" appHighlightLesson>
+                        <h3>{{ lesson.title }}</h3>
+                        <h5>{{ lesson.content }}</h5>
+                        <div class="button-group">
+                            <button (click)="editLesson(lesson)">Edit Lesson</button>
+                            <button (click)="deleteItem(lesson.id, 'Lesson', selectedCourse.id)">Delete Lesson</button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    <div class="button-group">
+        <button (click)="openForm(null, 'Lesson', selectedCourse?.id)" [disabled]="!selectedCourse">Add New
+            Lesson</button>
+        <button (click)="openForm(null, 'Course')">Add New Course</button>
+    </div>
+
+    @if (showForm) {
+    <div class="form-container">
+        <h3>@if (isEditing) { Edit {{ formType }} } @else { Add New {{ formType }} }</h3>
+
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput [(ngModel)]="currentItem.title" name="title" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>@if (formType === 'Course') { Description } @else { Content }</mat-label>
+            <input matInput [(ngModel)]="currentCourseContent" name="description" required>
+        </mat-form-field>
+
+        <button mat-raised-button (click)="saveItem()">
+            @if (isEditing) { Save Changes } @else { Create {{ formType }} }
+        </button>
+    </div>
+    }
+</div>

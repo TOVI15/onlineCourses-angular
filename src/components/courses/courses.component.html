@@ -1,0 +1,9 @@
+@for (course of courses; track course) {
+<div  class="course-card">
+  <h3>{{ course.title }}</h3>
+  <p>{{ course.description }}</p>
+  <button (click)="toggleEnrollment(course)" [ngClass]="course.isJoined ? 'leave-btn' : 'join-btn'">
+    {{ course.isJoined ? 'עזוב קורס' : 'הצטרף לקורס' }}
+  </button>
+</div>
+}

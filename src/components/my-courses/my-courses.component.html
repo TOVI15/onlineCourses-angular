@@ -1,0 +1,44 @@
+@if (courses.length > 0) {
+<div class="container">
+    <h1 class="title">My Courses</h1>
+    <mat-card class="course-selection">
+        <h2>Select a Course</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Choose a course</mat-label>
+            <mat-select [(ngModel)]="selectedCourseId" (selectionChange)="getInfomtionForCourse(selectedCourseId)">
+                @for (course of courses; track course.id) {
+                <mat-option [value]="course.id">{{ course.title }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </mat-card>
+
+    @if (selectedCourseId !== 0) {
+    @if (selectedCourse ) {
+    <mat-card class="selected-course">
+        <h2>{{ selectedCourse.title }}</h2>
+        <p>{{ selectedCourse.description }}</p>
+    </mat-card>
+    }
+
+    @if (lessons.length > 0) {
+    <div class="lessons-section">
+        <h2>Lessons in this Course</h2>
+        <div class="lessons-grid">
+            @for (lesson of lessons; track lesson.id) {
+            <mat-card class="lesson-card">
+                <h3>{{ lesson.title }}</h3>
+                <p>{{ lesson.description }}</p>
+                <button mat-raised-button color="primary" (click)="downloadMaterial(lesson)">
+                    Download Material
+                </button>
+            </mat-card>
+            }
+        </div>
+    </div>
+    } @else {
+    <p class="no-lessons">No lessons available for this course.</p>
+    }
+    }
+</div>
+} 

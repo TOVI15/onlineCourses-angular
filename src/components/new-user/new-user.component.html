@@ -1,0 +1,53 @@
+<mat-card class="user-form-card">
+  <h2>Enter your details:</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Your Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter full name">
+        @if (userForm.get('name')?.invalid && userForm.get('name')?.touched) {
+        <mat-error>
+          Name not valid
+        </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="example@mail.com">
+        <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+          Email not valid
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Your Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter password">
+        @if(userForm.get('password')?.invalid && userForm.get('password')?.touched) {
+        <mat-error>
+          The password must contain at least 6 characters.
+        </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Your Role</mat-label>
+        <mat-select formControlName="role">
+          @for (role of roles; track role) {
+            <mat-option [value]="role">{{ role }}</mat-option>
+          }
+        </mat-select>
+    
+        @if (userForm.get('role')?.invalid && userForm.get('role')?.touched) {
+          <mat-error>Must choose a role</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Add</button>
+    </div>
+  </form>
+</mat-card>

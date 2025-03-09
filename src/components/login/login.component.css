@@ -1,0 +1,36 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-height: calc(100vh - 60px);
+  background-color: #f5f5f5;
+  animation: fadeIn 0.3s ease-in-out; 
+  margin-top: 60px;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 400px; 
+  padding: 20px;
+  text-align: center;
+  margin: 180px auto 0; 
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+
+/* FadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

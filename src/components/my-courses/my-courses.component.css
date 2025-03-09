@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.course-selection {
+    width: 60%;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.selected-course {
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.lessons-section {
+    width: 80%;
+    text-align: center;
+}
+
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.lesson-card {
+    padding: 20px;
+    text-align: center;
+}
+
+.no-lessons {
+    font-style: italic;
+    color: gray;
+    margin-top: 20px;
+}

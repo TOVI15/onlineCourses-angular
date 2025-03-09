@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  margin-top: 100px;
+}
+
+.user-form-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: white;
+  animation: fadeIn 0.3s ease-in-out;
+  padding: 20px;
+  text-align: center;
+  margin: 160px auto 0;
+}
+
+
+/* אנימציה לטעינה */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
