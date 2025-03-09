@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   
       this.authService.login(userData).subscribe(
         (response) => {
-          this.authService.storeToken(response.token); // שמירת הטוקן
+          this.authService.storeToken(response.token); 
           this.router.navigate(['/courses']);
         },
         (error) => {

@@ -37,6 +37,7 @@ export class CoursesComponent implements OnInit {
   }
 
   toggleEnrollment(course: any) {
+    if (typeof window === 'undefined') return undefined;
     if (this.userId === undefined) {
       console.error('User ID not found!');
       alert('You must be logged in to join or leave a course.');

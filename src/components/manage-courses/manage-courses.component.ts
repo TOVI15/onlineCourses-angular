@@ -51,7 +51,7 @@ export class ManageCoursesComponent {
   }
 
   private extractUserIdFromToken(): number {
-    if (!sessionStorage.getItem('token')) return -1;
+    if (typeof window === 'undefined' || !sessionStorage.getItem('token')) return -1;
     try {
       const token = sessionStorage.getItem('token')!;
       const payload = JSON.parse(atob(token.split('.')[1])); // פענוח ה-JWT
@@ -84,27 +84,6 @@ export class ManageCoursesComponent {
     if (courseId) this.selectedCourse = this.courses.find(c => c.id === courseId);
     this.showForm = true;
   }
-
-  // openForm(item: any = null, type: 'Course' | 'Lesson' = 'Course', courseId: number | null = null) {
-  //   this.isEditing = !!item;
-  //   this.formType = type;
-    
-  //   // אם מדובר בקורס
-  //   if (type === 'Course') {
-  //     this.currentItem = item ? { ...item } : { title: '', description: '' }; // שדות הקורס
-  //   }
-  //   // אם מדובר בשיעור
-  //   else if (type === 'Lesson') {
-  //     this.currentItem = item ? { ...item } : { title: '',  content: '' }; // שדות השיעור
-  //   }
-  
-  //   if (courseId) {
-  //     this.selectedCourse = this.courses.find(c => c.id === courseId);
-  //   }
-  
-  //   this.showForm = true;
-  // }
-
 
   saveItem() {
     if (this.isEditing) {
@@ -168,7 +147,6 @@ export class ManageCoursesComponent {
     }
   }
 
-  // פונקציה לעריכת שיעור
   editLesson(lesson: any) {
     if (this.selectedCourse) {
       this.openForm(lesson, 'Lesson', this.selectedCourse.id);

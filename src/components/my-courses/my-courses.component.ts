@@ -38,7 +38,8 @@ export class MyCoursesComponent implements OnInit {
  
   getMyCourses() {
     const studentId = this.extractUserIdFromToken();
-    if (studentId === -1) {
+    if (typeof window === 'undefined' ) return undefined;
+    if (studentId === -1 ) {
       console.error('User ID not found!');
       return;
     }
@@ -92,7 +93,6 @@ export class MyCoursesComponent implements OnInit {
     );
   }
 
-  // פונקציה להורדת חומרי שיעור
   downloadMaterial(lesson: any) {
     const a = document.createElement('a');
     a.href = lesson.materialUrl; 
